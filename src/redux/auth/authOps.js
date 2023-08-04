@@ -14,7 +14,7 @@ export const register = createAsyncThunk(
   async function (user, { rejectWithValue }) {
     try {
       const response = await userRegister(user);
-      token.set(response.token);
+      // token.set(response.token);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -61,7 +61,9 @@ export const getCurrent = createAsyncThunk(
 );
 export const verify = createAsyncThunk('user/VerifyEmail', async (code, { rejectWithValue }) => {
   try {
-    await verifyByCode(code);
+    const credentials = await verifyByCode(code);
+    token.set(credentials.token);
+    return credentials;
   } catch (error) {
     return rejectWithValue(error.message);
   }

@@ -3,6 +3,6 @@ export default {
   home: '/',
   register: '/register',
   login: '/login',
-  verify: '/verify/:verifycode',
+  verify: '/verify/', //  :verifycode
   items: '/items'
 };

@@ -1,5 +1,10 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { getCurrent } from './redux/auth/authOps';
+
+import usePHBState from './redux/selectors';
 
 import PrivateRoutes from './components/Routes/PrivateRoutes';
 import PubliceRourtes from './components/Routes/PubliceRoutes';
@@ -15,7 +20,15 @@ import ItemsPage from './pages/ItemPage';
 import routes from './routes.js';
 
 function App() {
-  return (
+  const { isRefreshing } = usePHBState();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrent());
+  }, [dispatch]);
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path={routes.home} element={<Layout />}>

@@ -18,8 +18,9 @@ export const ErrorLogger: Middleware = (_api) => (next) => (action) => {
     toast.error(action.payload);
   }
 
-  if (action.type === regExp.userRegFF || action.type === regExp.userLoginFF)
-    toast.success('Welcome!');
+  if (action.type === regExp.userRegFF)
+    toast.success('Verification letter was send to you eamil adress');
+  if (action.type === regExp.userLoginFF) toast.success('Welcome!');
 
   if (action.type === regExp.userLogOutFF) {
     toast.success('Have a nice day!');

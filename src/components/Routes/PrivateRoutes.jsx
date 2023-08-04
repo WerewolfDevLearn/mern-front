@@ -8,5 +8,5 @@ export default function PrivateRoutes() {
     user: { profile }
   } = usePHBState();
 
-  return profile.name ? <Outlet /> : <Navigate to={routes.login} />;
+  return profile.verifiedEmail ? <Outlet /> : <Navigate to={routes.login} />;
 }

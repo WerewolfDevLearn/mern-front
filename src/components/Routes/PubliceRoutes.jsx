@@ -8,5 +8,5 @@ export default function PubliceRoutes() {
     user: { profile }
   } = usePHBState();
 
-  return profile.name ? <Navigate to={routes.items} /> : <Outlet />;
+  return profile.verifiedEmail ? <Navigate to={routes.items} /> : <Outlet />;
 }

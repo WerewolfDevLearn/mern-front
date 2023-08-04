@@ -36,6 +36,7 @@
         ],
         "newlines-between": "always-and-inside-groups"
       }
-    ]
+    ],
+    "multiline-ternary": "off"
   }
 }

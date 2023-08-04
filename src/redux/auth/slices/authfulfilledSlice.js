@@ -3,35 +3,31 @@ import { persistReducer } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
 
-import { register, userlogin, logOut, getCurrent } from '../authOps';
+import { register, userlogin, logOut, getCurrent, verify } from '../authOps';
 
 const initialState = {
-  profile: { email: '', name: '', avatarUrl: '' },
+  profile: { email: '', name: '', avatarUrl: '', verifiedEmail: '' },
   token: ''
 };
+
+const userHandler = (state, { payload }) => {
+  state.profile.email = payload.user.email;
+  state.profile.name = payload.user.name;
+  state.profile.avatarUrl = payload.user.avatarUrl;
+  state.profile.verifiedEmail = payload.user.verifiedEmail;
+  state.token = payload.token;
+};
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(register.fulfilled, (state, { payload }) => {
-        state.profile.email = payload.email;
-        state.profile.name = payload.name;
-        state.profile.avatarUrl = payload.avatarUrl;
-        state.token = payload.token;
-      })
-      .addCase(userlogin.fulfilled, (state, { payload }) => {
-        state.profile.email = payload.user.email;
-        state.profile.name = payload.user.name;
-        state.profile.avatarUrl = payload.user.avatarUrl;
-        state.token = payload.token;
-      })
-      .addCase(getCurrent.fulfilled, (state, { payload }) => {
-        state.profile.email = payload.user.email;
-        state.profile.name = payload.user.name;
-        state.profile.avatarUrl = payload.user.avatarUrl;
-      })
+      .addCase(register.fulfilled, userHandler)
+      .addCase(userlogin.fulfilled, userHandler)
+      .addCase(verify.fulfilled, userHandler)
+      .addCase(getCurrent.fulfilled, userHandler)
       .addCase(logOut.fulfilled, () => initialState);
   }
 });
