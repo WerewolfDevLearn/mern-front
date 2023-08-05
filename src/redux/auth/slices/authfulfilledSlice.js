@@ -5,16 +5,13 @@ import storage from 'redux-persist/lib/storage';
 
 import { register, userlogin, logOut, getCurrent, verify } from '../authOps';
 
-const initialState = {
-  profile: { email: '', name: '', avatarUrl: '', verifiedEmail: '' },
-  token: ''
-};
+const initialState = { token: '', email: '', name: '', avatarUrl: '', verifiedEmail: '' };
 
 const userHandler = (state, { payload }) => {
-  state.profile.email = payload.user.email;
-  state.profile.name = payload.user.name;
-  state.profile.avatarUrl = payload.user.avatarUrl;
-  state.profile.verifiedEmail = payload.user.verifiedEmail;
+  state.email = payload.user.email;
+  state.name = payload.user.name;
+  state.avatarUrl = payload.user.avatarUrl;
+  state.verifiedEmail = payload.user.verifiedEmail;
   state.token = payload.token;
 };
 
@@ -33,10 +30,10 @@ const userSlice = createSlice({
 });
 
 const persistUserConfig = {
-  key: 'token',
+  key: 'credentials',
   storage,
-  whitelist: ['token']
+  whitelist: ['token', 'email']
 };
 
-export const userReducer = userSlice.reducer;
+const userReducer = userSlice.reducer;
 export const persistedUserReducer = persistReducer(persistUserConfig, userReducer);

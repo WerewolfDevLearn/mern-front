@@ -13,10 +13,12 @@ export default function RegisterPage() {
   const navigate = useNavigate();
   const [emailSend, setEmailSend] = useState(false);
   const { error, isLoading } = usePHBState();
+
   const callBack = (data) => {
     dispatch(register(data));
     setEmailSend(true);
   };
+
   useEffect(() => {
     if (!error && !isLoading && emailSend) {
       navigate(routes.verify);

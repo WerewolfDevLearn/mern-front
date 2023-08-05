@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import routes from 'src/routes';
-import { verify } from 'src/redux/auth/authOps';
+import { verify, sendEmail } from 'src/redux/auth/authOps';
 
 import usePHBState from '../redux/selectors';
 
@@ -11,18 +11,23 @@ export default function VerifyPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [sendCode, setSendCode] = useState(false);
+
   const {
     error,
     isLoading,
-    user: {
-      profile: { verifiedEmail }
-    }
+    user: { verifiedEmail, email }
   } = usePHBState();
 
-  const onVerify = (event) => {
+  const sendVerifyCode = (event) => {
     event.preventDefault();
     const verifycode = event.target.code.value;
     dispatch(verify(verifycode));
+    setSendCode(true);
+  };
+  const SendVerifyEmail = () => {
+    console.log('email: ', email);
+
+    dispatch(sendEmail(email));
     setSendCode(true);
   };
 
@@ -34,11 +39,15 @@ export default function VerifyPage() {
 
   return (
     <>
-      <form id="verifyCode" onSubmit={onVerify}>
+      <form id="verifyCode" onSubmit={sendVerifyCode}>
         <label htmlFor="code">Enter verifycation code</label>
         <input type="text" autoComplete="off" id="code" name="code" />
         <button type="submit">Press to verify your email</button>
       </form>
+      <p>If you did not resive email, we can send you another one. </p>
+      <button type="button" onClick={SendVerifyEmail}>
+        Send verification Email
+      </button>
     </>
   );
 }

@@ -6,6 +6,7 @@ import {
   userLogOut,
   getCurrentUser,
   verifyByCode,
+  sendVEmail,
   token
 } from '../../services/authAxApi';
 
@@ -63,6 +64,14 @@ export const verify = createAsyncThunk('user/VerifyEmail', async (code, { reject
   try {
     const credentials = await verifyByCode(code);
     token.set(credentials.token);
+    return credentials;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+export const sendEmail = createAsyncThunk('user/SendEmail', async (email, { rejectWithValue }) => {
+  try {
+    const credentials = await sendVEmail(email);
     return credentials;
   } catch (error) {
     return rejectWithValue(error.message);

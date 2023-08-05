@@ -4,9 +4,6 @@ import usePHBState from '../../redux/selectors';
 import routes from '../../routes';
 
 export default function PubliceRoutes() {
-  const {
-    user: { profile }
-  } = usePHBState();
-
-  return profile.verifiedEmail ? <Navigate to={routes.items} /> : <Outlet />;
+  const { user } = usePHBState();
+  return user.verifiedEmail ? <Navigate to={routes.items} /> : <Outlet />;
 }

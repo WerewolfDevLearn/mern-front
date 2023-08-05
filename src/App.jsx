@@ -20,12 +20,15 @@ import ItemsPage from './pages/ItemPage';
 import routes from './routes.js';
 
 function App() {
-  const { isRefreshing } = usePHBState();
+  const {
+    isRefreshing,
+    user: { token }
+  } = usePHBState();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCurrent());
-  }, [dispatch]);
+    if (token) dispatch(getCurrent());
+  }, [dispatch, token]);
   return isRefreshing ? (
     <Loader />
   ) : (

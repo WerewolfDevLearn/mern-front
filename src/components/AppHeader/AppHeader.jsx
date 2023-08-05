@@ -4,8 +4,8 @@ import usePHBState from '../../redux/selectors';
 
 function AppHeader() {
   const state = usePHBState();
-  const verifiedEmail = state.user.profile.verifiedEmail;
-  const userName = state.user.profile.name;
+  const verifiedEmail = state.user.verifiedEmail;
+  const userName = state.user.name;
   return <header>{verifiedEmail ? <UserMenu userName={userName} /> : <Navigation />}</header>;
 }
 

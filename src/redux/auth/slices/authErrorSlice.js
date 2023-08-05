@@ -10,6 +10,11 @@ const errorSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(register.pending, () => '')
+      .addCase(userlogin.pending, () => '')
+      .addCase(logOut.pending, () => '')
+      .addCase(verify.pending, () => '')
+
       .addCase(register.rejected, (_, { payload }) => payload)
       .addCase(userlogin.rejected, (_, { payload }) => payload)
       .addCase(logOut.rejected, (_, { payload }) => payload)

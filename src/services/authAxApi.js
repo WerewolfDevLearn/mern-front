@@ -34,8 +34,8 @@ export async function verifyByCode(verifyCode) {
   const data = response.data;
   return data;
 }
-export async function verifyByEmail(email) {
-  const response = await axios.post('/users/verify', email);
+export async function sendVEmail(email) {
+  const response = await axios.post('/users/verify', { email });
   const data = response.data;
   return data;
 }
