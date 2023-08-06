@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const contactApi = createApi({
+export const itemApi = createApi({
   reducerPath: 'contacts',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com',
@@ -51,4 +51,4 @@ export const {
   useCreateContactMutation,
   useDeleteContactMutation,
   useUpdateContactsMutation
-} = contactApi;
+} = itemApi;

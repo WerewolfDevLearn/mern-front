@@ -4,7 +4,7 @@ import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 
 
 import { ErrorLogger } from '../utils/notify-MD';
 
-import { contactApi } from './Items/itemsApi';
+import { itemApi } from './Items/itemsApi';
 import { persistedUserReducer } from './auth/slices/authfulfilledSlice';
 import { isRefreshingReducer } from './auth/slices/authRefreshingSlice';
 import { errorReducer } from './auth/slices/authErrorSlice';
@@ -17,7 +17,7 @@ export const store = configureStore({
     error: errorReducer,
     isLoading: isLoadingReducer,
     isRefreshing: isRefreshingReducer,
-    [contactApi.reducerPath]: contactApi.reducer,
+    [itemApi.reducerPath]: itemApi.reducer,
     filter: filterReducer
   },
   middleware: (gDM) =>
@@ -26,7 +26,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
     })
-      .concat(contactApi.middleware)
+      .concat(itemApi.middleware)
       .concat(ErrorLogger),
   devTools: process.env.NODE_ENV === 'development'
 });

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import routes from 'src/routes';
 
@@ -19,11 +19,9 @@ export default function RegisterPage() {
     setEmailSend(true);
   };
 
-  useEffect(() => {
-    if (!error && !isLoading && emailSend) {
-      navigate(routes.verify);
-    }
-  }, [error, isLoading, emailSend]);
+  if (!error && !isLoading && emailSend) {
+    navigate(routes.verify);
+  }
 
   return (
     <>
