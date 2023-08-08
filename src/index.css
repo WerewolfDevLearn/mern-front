@@ -1,69 +1,123 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+@import-normalize; /* bring in normalize.css styles */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('styles/fonts/Inter-Regular.woff2') format('woff2'),
+    url('styles/fonts/Inter-Regular.woff') format('woff');
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
-  color-scheme: light dark;
-  color: rgba(0, 0, 0, 0.87);
-  background-color: #ffffff;
+@font-face {
+  font-family: 'Inter';
+  src: url('styles/fonts/Inter-Medium.woff2') format('woff2'),
+    url('styles/fonts/Inter-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+@font-face {
+  font-family: 'Inter';
+  src: url('styles/fonts/Inter-SemiBold.woff2') format('woff2'),
+    url('styles/fonts/Inter-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('styles/fonts/Inter-Bold.woff2') format('woff2'),
+    url('styles/fonts/Inter-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('styles/fonts/Coolvetica-Regular.woff2') format('woff2'),
+    url('styles/fonts/Coolvetica-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('styles/fonts/Coolvetica-Italic.woff2') format('woff2'),
+    url('styles/fonts/Coolvetica-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  font-weight: 400;
+  line-height: 1.29;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+.list {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+}
+
+.list {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-/* body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-} */
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  text-decoration: none;
+  font-style: normal;
+  cursor: pointer;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  padding: 0;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }

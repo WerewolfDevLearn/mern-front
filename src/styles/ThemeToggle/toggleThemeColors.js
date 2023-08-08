@@ -1,6 +1,6 @@
 import { themeRootColors } from 'styles/themeColor';
 
-const toggleTheme = toggle => {
+const toggleTheme = (toggle) => {
   const {
     backTheme1Color,
     backTheme2Color,
@@ -15,7 +15,7 @@ const toggleTheme = toggle => {
     categoryTheme1,
     backSecond1,
     backSecond2,
-    backThird,
+    backThird
   } = themeRootColors;
 
   if (toggle) {

@@ -11,7 +11,7 @@ export const itemApi = createApi({
       }
     }
   }),
-  tagTypes: ['Contacts'],
+  tagTypes: ['ITEMS'],
   endpoints: (builder) => ({
     getContats: builder.query({
       query: () => ({

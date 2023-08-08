@@ -15,7 +15,7 @@ import ErrorPage from './pages/ErrorPage';
 import LoginPage from './pages/LoginPage';
 import VerifyPage from './pages/VerifyPage';
 import RegisterPage from './pages/RegisterPage';
-import ItemsPage from './pages/ItemPage';
+import ItemsPage from './pages/ItemsPage';
 
 import routes from './routes.js';
 
