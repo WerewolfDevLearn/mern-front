@@ -5,7 +5,7 @@ import { useState } from 'react';
 import routes from 'src/routes';
 
 import { register } from '../redux/auth/authOps';
-import { RegisterForm } from '../components/Forms/index';
+import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
 import usePHBState from '../redux/selectors';
 
 export default function RegisterPage() {

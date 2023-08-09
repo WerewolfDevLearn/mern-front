@@ -12,5 +12,5 @@ export const themeRootColors = {
   categoryTheme1: 'rgba(189, 189, 189, 1)',
   backSecond1: 'rgb(42, 44, 54)',
   backSecond2: 'rgb(235, 243, 212)',
-  backThird: 'rgb(255, 255, 255)',
+  backThird: 'rgb(255, 255, 255)'
 };

@@ -2,12 +2,11 @@ import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
 import { InputField } from '../InputField/InputField';
-
 import { validationRules } from '../validationRules';
 
 import { Form } from './RegisterForm.styled';
 
-export const RegisterForm = ({ option, title, buttonName, onSubmitForm }) => {
+export default function RegisterForm({ option, title, buttonName, onSubmitForm }) {
   const {
     register,
     handleSubmit,
@@ -58,7 +57,7 @@ export const RegisterForm = ({ option, title, buttonName, onSubmitForm }) => {
       </Form>
     </>
   );
-};
+}
 
 RegisterForm.propTypes = {
   option: PropTypes.string.isRequired,

@@ -1,4 +1,4 @@
-import { themeRootColors } from 'styles/themeColor';
+import { themeRootColors } from 'styles/themeColors';
 
 const toggleTheme = (toggle) => {
   const {

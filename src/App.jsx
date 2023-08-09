@@ -8,14 +8,16 @@ import usePHBState from './redux/selectors';
 
 import PrivateRoutes from './components/Routes/PrivateRoutes';
 import PubliceRourtes from './components/Routes/PubliceRoutes';
-import Layout from './components/Layout/Layout';
+import MainLayout from './components/MainLayout/MainLayout';
+import AccountPage from './components/AccountPage/AccountPage';
+import CalendarPage from './components/CalendarPage/CalendarPage';
+import SatisticsPage from './components/SatisticsPage/SatisticsPage';
 import Loader from './components/Loader/Loader';
-import HomePage from './pages/HomePage';
+import MainPage from './pages/MainPage';
 import ErrorPage from './pages/ErrorPage';
 import LoginPage from './pages/LoginPage';
-import VerifyPage from './pages/VerifyPage';
+
 import RegisterPage from './pages/RegisterPage';
-import ItemsPage from './pages/ItemsPage';
 
 import routes from './routes.js';
 
@@ -34,21 +36,42 @@ function App() {
   ) : (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path={routes.home} element={<Layout />}>
-          <Route element={<PubliceRourtes />}>
-            <Route index element={<HomePage />} />
-            <Route path={routes.login} element={<LoginPage />} />
-            <Route path={routes.register} element={<RegisterPage />} />
-            <Route path={routes.verify} element={<VerifyPage />} />
-          </Route>
-          <Route element={<PrivateRoutes />}>
-            <Route path={routes.items} element={<ItemsPage />} />
-          </Route>
-          <Route path="*" element={<ErrorPage />} />
+        <Route path={routes.mainPage} element={<PubliceRourtes />}>
+          <Route path={routes.mainPage} element={<MainPage />} />
+          <Route path={routes.registerPage} element={<RegisterPage />} />
+          <Route path={routes.loginPage} element={<LoginPage />} />
         </Route>
+        <Route path={routes.mainPage} element={<PrivateRoutes />}>
+          <Route path={routes.mainLayout} element={<MainLayout />}>
+            <Route path={routes.accountPage} element={<AccountPage />} />
+            <Route path={routes.calendarPage} element={<CalendarPage />} />
+            {/* day Page */}
+            <Route path={routes.statisticsPage} element={<SatisticsPage />} />
+          </Route>
+        </Route>
+
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Suspense>
   );
 }
 
 export default App;
+
+/* //   <Routes>
+    //     <Route path={routes.home} element={<MainLayout />}>
+    //       <Route element={<PubliceRourtes />}>
+    //         <Route index element={<MainPage />} />
+    //         <Route path={routes.register} element={<RegisterPage />} />
+    //         <Route path={routes.login} element={<LoginPage />} />
+    //         <Route path={routes.verify} element={<VerifyPage />} />
+    //       </Route>
+    //       <Route element={<PrivateRoutes />}>
+    //     <Route path={routes.home} element={<MainLayout />}>
+    //         <Route path={routes.items} element={<ItemsPage />} />
+    //         <Route path={routes.items} element={<ItemsPage />} />
+    //         <Route path={routes.items} element={<ItemsPage />} />
+    //       </Route>
+    //       <Route path="*" element={<ErrorPage />} />
+    //     </Route>
+    //   </Routes> */

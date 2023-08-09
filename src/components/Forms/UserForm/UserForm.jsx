@@ -1,4 +1,4 @@
-export function EditeUserForm() {
+export default function UserForm() {
   return (
     <>
       <form>

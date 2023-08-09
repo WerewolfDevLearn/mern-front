@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 import { userlogin } from '../redux/auth/authOps';
-import { RegisterForm } from '../components/Forms/index';
+import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
